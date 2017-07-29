@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput, Image, Platform, StyleSheet, Dimensions} from 'react-native';
+import {TouchableOpacity, View, TextInput, Image, Platform, StyleSheet, Dimensions} from 'react-native';
 import Display from '../resource/Display';
 
 
@@ -28,9 +28,15 @@ export default class IconInputText extends React.Component {
                                marginTop: androidImgMarginTop,
                                marginRight: this.props.drawablePadding
                            }]}/>
-                    <TextInput placeholderTextColor={Display.gray_b5} placeholder={this.props.placeholder}
+                    <TextInput secureTextEntry={this.props.secureTextEntry} maxLength={this.props.maxLength}
+                               keyboardType={this.props.keyboardType}
+                               placeholderTextColor={Display.gray_b5} placeholder={this.props.placeholder}
                                underlineColorAndroid={underlineColorAndroid}
                                style={[this.props.contentStyle, {flex: 1, padding: padding, color: Display.black_33}]}/>
+
+                    {/*<TouchableOpacity>*/}
+                        {/*<Image source={} />*/}
+                    {/*</TouchableOpacity>*/}
                 </View>
 
                 <View style={{

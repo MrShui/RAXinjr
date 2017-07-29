@@ -2,7 +2,9 @@ import React from 'react';
 import {StackNavigator, NavigationActions} from 'react-navigation';
 import {Image, StyleSheet, StatusBar, View} from 'react-native';
 import Dimensions from 'Dimensions';
-import MainScreen from './MainScreen';
+import LoginScreen from './LoginScreen';
+import ForgetPassword from "./ForgetPassword";
+import Regist from "./Regist";
 
 class SplashScreen extends React.Component {
     constructor() {
@@ -15,7 +17,7 @@ class SplashScreen extends React.Component {
             () => {
                 //跳转到主界面
                 this.launchMain();
-            }, 2000
+            }, 1
         );
     }
 
@@ -25,7 +27,7 @@ class SplashScreen extends React.Component {
     launchMain() {
         const resetActions = NavigationActions.reset({
             index: 0,
-            actions: [NavigationActions.navigate({routeName: 'Main'})]
+            actions: [NavigationActions.navigate({routeName: 'Login'})]
         });
         this.props.navigation.dispatch(resetActions);
     }
@@ -54,8 +56,14 @@ const ModalStack = StackNavigator({
     Splash: {
         screen: SplashScreen
     },
-    Main: {
-        screen: MainScreen
+    Login: {
+        screen: LoginScreen
+    },
+    ForgetPassword: {
+        screen: ForgetPassword
+    },
+    Regist: {
+        screen: Regist
     },
 });
 
