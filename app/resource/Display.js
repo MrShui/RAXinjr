@@ -9,6 +9,7 @@ export default {
 
     gray_b5: '#b5b5b5',
     gray_d3: '#d3d3d3',
+    gray_66: '#666666',
     gray_95: '#959595',
     black_33: '#333333',
     transparent: 'transparent',
