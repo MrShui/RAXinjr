@@ -33,10 +33,14 @@ export default class PasswordInputText extends React.Component {
                                marginTop: androidImgMarginTop,
                                marginRight: 30
                            }]}/>
-                    <TextInput secureTextEntry={!this.state.showPassword} maxLength={18}
-                               placeholderTextColor={Display.gray_b5} placeholder="密码：6-20位数字、字母组合"
-                               underlineColorAndroid={underlineColorAndroid}
-                               style={[{fontSize: 15, flex: 1, padding: padding, color: Display.black_33}]}/>
+                    <TextInput
+                        onChangeText={(text) => {
+                            this.text = text;
+                        }}
+                        secureTextEntry={!this.state.showPassword} maxLength={18}
+                        placeholderTextColor={Display.gray_b5} placeholder="密码：6-20位数字、字母组合"
+                        underlineColorAndroid={underlineColorAndroid}
+                        style={[{fontSize: 15, flex: 1, padding: padding, color: Display.black_33}]}/>
 
                     <TouchableOpacity activeOpacity={0.5} onPress={() => {
                         this.eyeClick()
@@ -64,6 +68,10 @@ export default class PasswordInputText extends React.Component {
         this.setState({
             showPassword: !this.state.showPassword
         });
+    }
+
+    getText() {
+        return this.text;
     }
 }
 

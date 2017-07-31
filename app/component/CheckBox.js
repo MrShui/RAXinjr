@@ -1,17 +1,14 @@
 import React from 'react';
 import {Image, TouchableOpacity} from 'react-native';
+import PropTypes from 'prop-types';
+
+React.Component.propTypes = {
+    checked: PropTypes.bool,
+    onChange: PropTypes.func
+};
 
 
 export default class CheckBox extends React.Component {
-    static defaultProps = {
-        onChange: false,
-    }
-
-    static propTypes = {
-        checked: React.PropTypes.bool,
-        onChange: React.PropTypes.func
-    };
-
     constructor(props) {
         super(props);
         this.state = {

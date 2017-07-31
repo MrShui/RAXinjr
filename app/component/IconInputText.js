@@ -28,15 +28,16 @@ export default class IconInputText extends React.Component {
                                marginTop: androidImgMarginTop,
                                marginRight: this.props.drawablePadding
                            }]}/>
-                    <TextInput secureTextEntry={this.props.secureTextEntry} maxLength={this.props.maxLength}
-                               keyboardType={this.props.keyboardType}
-                               placeholderTextColor={Display.gray_b5} placeholder={this.props.placeholder}
-                               underlineColorAndroid={underlineColorAndroid}
-                               style={[this.props.contentStyle, {flex: 1, padding: padding, color: Display.black_33}]}/>
-
-                    {/*<TouchableOpacity>*/}
-                        {/*<Image source={} />*/}
-                    {/*</TouchableOpacity>*/}
+                    <TextInput
+                        onChangeText={(text) => {
+                            this.text = text;
+                        }}
+                        ref="text_input" secureTextEntry={this.props.secureTextEntry}
+                        maxLength={this.props.maxLength}
+                        keyboardType={this.props.keyboardType}
+                        placeholderTextColor={Display.gray_b5} placeholder={this.props.placeholder}
+                        underlineColorAndroid={underlineColorAndroid}
+                        style={[this.props.contentStyle, {flex: 1, padding: padding, color: Display.black_33}]}/>
                 </View>
 
                 <View style={{
@@ -48,4 +49,8 @@ export default class IconInputText extends React.Component {
             </View>
         );
     }
-}
+
+    getText() {
+        return this.text;
+    }
+};

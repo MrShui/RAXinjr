@@ -23,14 +23,42 @@ export default class Regist extends React.Component {
     nextBtnClick() {
         let checkBox = this.refs['checkBox'];
         let checked = checkBox.isChecked();
+        let phoneNum = this.refs['phone_num'].getText();
+        let password = this.refs['password'].getText();
+        if (!checked) {
+            this.showMessage('请阅读并同意《平台协议》');
+        } else if (this.isEmpty(phoneNum)) {
+            this.showMessage('请输入手机号');
+        } else if (!this.verifyPassword(password)) {
+            this.showMessage('您输入的密码不合法');
+        } else {
+            this.showMessage('调用注册接口');
+        }
+    }
+
+    showMessage(message) {
         Alert.alert(
             '提示',
-            '请阅读并同意《平台协议》',
+            message,
             [
-                //第一个和第二个按钮的位置会颠倒
-                {text: '知道了', onPress: ()=> console.log('点击确定')},
+                {text: '知道了', onPress: () => console.log('点击确定')},
             ]
         );
+    }
+
+    isEmpty(obj) {
+        if (obj === null) return true;
+        if (typeof obj === 'undefined') {
+            return true;
+        }
+        if (typeof obj === 'string') {
+            if (obj === "") {
+                return true;
+            }
+            const reg = new RegExp("^([ ]+)|([　]+)$");
+            return reg.test(obj);
+        }
+        return false;
     }
 
     backClick() {
@@ -53,26 +81,32 @@ export default class Regist extends React.Component {
 
                 <Image source={require('../resource/img/icon60.png')} style={styles.appIcon}/>
 
-                <IconInputText maxLength={11} keyboardType="phone-pad" drawablePadding={30}
+                <IconInputText ref="phone_num" maxLength={11} keyboardType="phone-pad" drawablePadding={30}
                                leftSource={require('../resource/img/Cell-phone-number.png')}
                                placeholder='请输入手机号'
                                layoutStyle={styles.inputLayout} contentStyle={styles.inputContent}/>
 
-                <PasswordInputText/>
+                <PasswordInputText ref="password"/>
 
                 <View style={[{marginTop: 28, flexDirection: 'row'}]}>
-                    <IconInputText maxLength={6} keyboardType="numeric" drawablePadding={30}
-                                   leftSource={require('../resource/img/Verification-Code.png')}
-                                   placeholder='请输入验证码'
-                                   layoutStyle={[styles.inputLayout, {
-                                       paddingRight: 0,
-                                       marginTop: 0,
-                                       marginRight: 7.5,
-                                       flex: 1
-                                   }]}
-                                   contentStyle={styles.inputContent}/>
+                    <IconInputText
+                        maxLength={6}
+                        keyboardType="numeric"
+                        drawablePadding={30}
+                        leftSource={require('../resource/img/Verification-Code.png')}
+                        placeholder='请输入验证码'
+                        layoutStyle={[styles.inputLayout, {
+                            paddingRight: 0,
+                            marginTop: 0,
+                            marginRight: 7.5,
+                            flex: 1
+                        }]}
+                        contentStyle={styles.inputContent}/>
 
-                    <SendSmsBotton title="发送验证码"/>
+                    <SendSmsBotton
+                        onPress={() => {
+                            alert('点击了发送验证码');
+                        }}/>
                 </View>
 
                 <View style={styles.protocolContainer}>
@@ -98,6 +132,15 @@ export default class Regist extends React.Component {
 
     protocolClick() {
         alert('点击了协议');
+    }
+
+    /**
+     * 检验密码的合法性
+     * @param password
+     */
+    verifyPassword(password) {
+        const re = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
+        return password.match(re);
     }
 }
 

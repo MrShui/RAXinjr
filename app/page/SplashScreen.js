@@ -3,8 +3,9 @@ import {StackNavigator, NavigationActions} from 'react-navigation';
 import {Image, StyleSheet, StatusBar, View} from 'react-native';
 import Dimensions from 'Dimensions';
 import LoginScreen from './LoginScreen';
-import ForgetPassword from "./ForgetPassword";
-import Regist from "./Regist";
+import ForgetPasswordScreen from "./ForgetPasswordScreen";
+import RegistScreen from "./RegistScreen";
+import MainScreen from "./MainScreen";
 
 class SplashScreen extends React.Component {
     constructor() {
@@ -60,11 +61,14 @@ const ModalStack = StackNavigator({
         screen: LoginScreen
     },
     ForgetPassword: {
-        screen: ForgetPassword
+        screen: ForgetPasswordScreen
     },
     Regist: {
-        screen: Regist
+        screen: RegistScreen
     },
+    Main: {
+        screen: MainScreen
+    }
 });
 
 const styles = StyleSheet.create({
