@@ -15,11 +15,6 @@ export default class ForgetPassword extends React.Component {
         super();
     }
 
-    //设置navigation去标题栏
-    static navigationOptions = {
-        header: null
-    }
-
     backClick() {
         this.props.navigation.goBack();
     }

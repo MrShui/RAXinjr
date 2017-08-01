@@ -15,11 +15,6 @@ export default class Regist extends React.Component {
         super();
     }
 
-    //设置navigation去标题栏
-    static navigationOptions = {
-        header: null
-    }
-
     nextBtnClick() {
         let checkBox = this.refs['checkBox'];
         let checked = checkBox.isChecked();

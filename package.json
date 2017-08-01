@@ -8,13 +8,15 @@
   },
   "dependencies": {
     "ReactNative-checkbox": "^1.0.4",
+    "prop-types": "latest",
     "react": "16.0.0-alpha.12",
     "react-native": "0.46.4",
     "react-native-check-box": "^2.0.0",
+    "react-native-swiper": "^1.5.4",
     "react-native-vector-icons/FontAwesome": "latest",
     "react-native-viewpager": "^0.2.13",
     "react-navigation": "^1.0.0-beta.11",
-    "prop-types": "latest"
+    "rn-viewpager": "^1.2.3"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",

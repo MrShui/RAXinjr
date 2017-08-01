@@ -9,13 +9,9 @@ export default class MainScreen extends React.Component {
         super();
     }
 
-    //设置navigation去标题栏
-    static navigationOptions = {
-        header: null
-    }
-
     nextBtnClick() {
-        alert('点击了登录');
+        const {navigate} = this.props.navigation;
+        navigate('Main');
     }
 
     backClick() {

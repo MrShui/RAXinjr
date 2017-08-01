@@ -55,20 +55,35 @@ class SplashScreen extends React.Component {
 
 const ModalStack = StackNavigator({
     Splash: {
-        screen: SplashScreen
+        screen: SplashScreen,
+        navigationOptions: ({navigation}) => ({
+            header: null
+        }),
     },
     Login: {
-        screen: LoginScreen
+        screen: LoginScreen,
+        navigationOptions: ({navigation}) => ({
+            header: null
+        }),
     },
     ForgetPassword: {
-        screen: ForgetPasswordScreen
+        screen: ForgetPasswordScreen,
+        navigationOptions: ({navigation}) => ({
+            header: null
+        }),
     },
     Regist: {
-        screen: RegistScreen
+        screen: RegistScreen,
+        navigationOptions: ({navigation}) => ({
+            header: null
+        }),
     },
     Main: {
-        screen: MainScreen
-    }
+        screen: MainScreen,
+        navigationOptions: ({navigation}) => ({
+            header: null
+        }),
+    },
 });
 
 const styles = StyleSheet.create({
